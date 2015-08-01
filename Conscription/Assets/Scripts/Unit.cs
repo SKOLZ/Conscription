@@ -12,6 +12,7 @@ public class Unit : MonoBehaviour {
 	public Vector3 moveDestination;
 	public Tile currentTile;
 	public float movSpeed = 10.0f;
+	public bool moved; 
 
 	void Awake () {
 		moveDestination = transform.position;
@@ -26,22 +27,24 @@ public class Unit : MonoBehaviour {
 
 	public void die() {
 		// TODO
-		Debug.Log (name + " has died.");
+		Debug.Log (" has died.");
 	}
 
 	public void attackUnit(Unit unit) {
 		unit.getHit (attack);
+		Debug.Log ("hash attacked");
+		moved = true;
 		getHit (unit.attack);
 	}
 
 	public virtual void move() {
 
-		if (Vector3.Distance (moveDestination, transform.position) > 0.1f)
+		if (Vector3.Distance (moveDestination, transform.position) > 0.1f) {
 			transform.position += (moveDestination - transform.position).normalized * movSpeed * Time.deltaTime;
-			
+
 			if (Vector3.Distance (moveDestination, transform.position) <= 0.1f)
 				transform.position = moveDestination;
-
+		}
 	}
 
 	void OnMouseDown () {

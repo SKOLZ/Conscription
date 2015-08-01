@@ -26,4 +26,5 @@ public class Player : MonoBehaviour {
 		maxMana = ((turnMana + maxMana) > manaCap) ? manaCap : (turnMana + maxMana); 
 		mana = ((turnMana + mana) > maxMana) ? maxMana : (turnMana + mana);  
 	}
+
 }

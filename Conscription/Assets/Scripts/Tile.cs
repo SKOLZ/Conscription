@@ -33,6 +33,8 @@ public class Tile : MonoBehaviour {
 		if (GameManager.instance.selected != null) {
 			if(!occupied ()) 
 				GameManager.instance.moveCurrentUnit (this);
+			if(occupied () && occupant.player != GameManager.instance.getCurrentPlayer())
+				GameManager.instance.selected.currentTile.occupant.attackUnit(occupant);
 		} else {
 			if(occupant && GameManager.instance.getCurrentPlayer() == occupant.player)
 				GameManager.instance.selected = occupant;

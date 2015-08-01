@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour {
 		turnNumber++;
 		currentPlayer = (currentPlayer + 1) % players.Length;
 		getCurrentPlayer ().addMoreMana ((turnNumber + 1) / 2);
+		clearMovements ();
 		updateNames ();
 	}
 	
@@ -52,8 +53,9 @@ public class GameManager : MonoBehaviour {
 	void Update () {
 		if (Input.GetMouseButtonDown (1))
 			selected = null;
-		foreach(Unit u in units)
+		foreach (Unit u in units) {
 			u.move ();
+		}
 	}
 
 	private void generateMap() {
@@ -70,6 +72,8 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void moveCurrentUnit(Tile destTile){
+		if (selected.moved)
+			return;
 		selected.currentTile.occupant = null;
 		selected.moveDestination = destTile.transform.position + 1.5f * Vector3.up;
 		destTile.occupant = selected;
@@ -97,6 +101,11 @@ public class GameManager : MonoBehaviour {
 		map [4] [4].occupant = unit;
 		unit.currentTile = map [4] [4];
 		unit.player = players [1];
+	}
+
+	public void clearMovements() {
+		foreach(Unit u in units)
+			u.moved = false;
 	}
 
 

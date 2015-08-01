@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour {
 	public int mapSize = 8; 
 	public List<List<Tile>> map = new List<List<Tile>>();
 	private List<Tile> possibleMoveTiles = new List<Tile>();
-	List <Unit> units = new List<Unit>();
+	public List <Unit> units = new List<Unit>();
 
 	void Awake (){
 		instance = this;

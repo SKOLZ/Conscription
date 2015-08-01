@@ -28,6 +28,9 @@ public class Unit : MonoBehaviour {
 
 	public void die() {
 		dead = true;
+		GameManager.instance.units.Remove (this);
+		GameManager.instance.clearHighlightedMoves ();
+		Destroy (this.gameObject);
 	}
 
 	public void attackUnit(Unit unit) {

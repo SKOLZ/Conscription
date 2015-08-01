@@ -16,6 +16,7 @@ public class Unit : MonoBehaviour {
 	public bool attacked;
 	public bool dead = false;
 	public Texture image;
+	public bool lord;
 
 	void Awake () {
 		moveDestination = transform.position;
@@ -31,6 +32,8 @@ public class Unit : MonoBehaviour {
 	public void die() {
 		dead = true;
 		GameManager.instance.units.Remove (this);
+		if (this.lord)
+			this.player.lord = null;
 		GameManager.instance.clearHighlightedMoves ();
 		GameManager.instance.clearHighlightedAttacks ();
 		Destroy (this.gameObject);
@@ -45,6 +48,7 @@ public class Unit : MonoBehaviour {
 		moved = true;
 		attacked = true;
 		getHit (unit.attack);
+		GameManager.instance.checkEndGame ();
 	}
 
 	public virtual void move() {

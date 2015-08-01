@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour {
 	private List<Tile> possibleMoveTiles = new List<Tile>();
 	private List<Tile> possibleAtgtacksTiles = new List<Tile>();
 	public List <Unit> units = new List<Unit>();
+	public bool end = false;
 
 	void Awake (){
 		instance = this;
@@ -165,6 +166,15 @@ public class GameManager : MonoBehaviour {
 			u.moved = false;
 			u.attacked = false;
 		}
+	}
+
+	public void checkEndGame() {
+		if (players [0].lord == null && players [1].lord == null)
+			Debug.Log ("DRAW");
+		else if (players [0].lord == null && players [1].lord != null)
+			Debug.Log ("Player 2 WON!"); 
+		else if (players [0].lord != null && players [1].lord == null)
+			Debug.Log ("Player 1 WON!"); 
 	}
 
 

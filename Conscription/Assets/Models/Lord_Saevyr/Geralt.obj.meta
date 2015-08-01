@@ -1,0 +1,141 @@
+fileFormatVersion: 2
+guid: 242fbd51ea78ed249ad3934ad1d7eb7a
+timeCreated: 1438448822
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Model001_24_Armor2_0.20_0_0.4
+    100004: Model001_24_Armor_0.20_0_0.6_LeftLeg_LeftLeg_Knee
+    100006: Model001_24_ArmorBelts_0.20_0_0.7_RightLeg_RightLeg_Knee
+    100008: Model001_24_Boots_0.20_0_0.5
+    100010: Model001_24_Eyes_0.5_0_0.1
+    100012: Model001_24_Face_0.25_0_0.8_LeftHand_LeftArm_Hand
+    100014: Model001_24_Gauntlets_0.20_0_0.9_RightHand_RightArm_Hand
+    100016: Model001_24_Mouth_0.10_0_0.3_Hips_Pelvis_1
+    100018: Model001_24_Pants_0.20_0_0.01_Torso_Spine_2
+    100020: Model001_24_PantsArmor_0.20_0_0.02_Head_Head_1
+    100022: Model001_24_PantsTires_0.20_0_0.1
+    100024: Model001_25_Hair1_0.10_0_0.1
+    100026: Model001_25_HairSide_0.10_0_0.2
+    100028: Model001_25_HairTail_0.10_0_0.3
+    400000: //RootNode
+    400002: Model001_24_Armor2_0.20_0_0.4
+    400004: Model001_24_Armor_0.20_0_0.6_LeftLeg_LeftLeg_Knee
+    400006: Model001_24_ArmorBelts_0.20_0_0.7_RightLeg_RightLeg_Knee
+    400008: Model001_24_Boots_0.20_0_0.5
+    400010: Model001_24_Eyes_0.5_0_0.1
+    400012: Model001_24_Face_0.25_0_0.8_LeftHand_LeftArm_Hand
+    400014: Model001_24_Gauntlets_0.20_0_0.9_RightHand_RightArm_Hand
+    400016: Model001_24_Mouth_0.10_0_0.3_Hips_Pelvis_1
+    400018: Model001_24_Pants_0.20_0_0.01_Torso_Spine_2
+    400020: Model001_24_PantsArmor_0.20_0_0.02_Head_Head_1
+    400022: Model001_24_PantsTires_0.20_0_0.1
+    400024: Model001_25_Hair1_0.10_0_0.1
+    400026: Model001_25_HairSide_0.10_0_0.2
+    400028: Model001_25_HairTail_0.10_0_0.3
+    2300000: Model001_24_Armor2_0.20_0_0.4
+    2300002: Model001_24_Armor_0.20_0_0.6_LeftLeg_LeftLeg_Knee
+    2300004: Model001_24_ArmorBelts_0.20_0_0.7_RightLeg_RightLeg_Knee
+    2300006: Model001_24_Boots_0.20_0_0.5
+    2300008: Model001_24_Eyes_0.5_0_0.1
+    2300010: Model001_24_Face_0.25_0_0.8_LeftHand_LeftArm_Hand
+    2300012: Model001_24_Gauntlets_0.20_0_0.9_RightHand_RightArm_Hand
+    2300014: Model001_24_Mouth_0.10_0_0.3_Hips_Pelvis_1
+    2300016: Model001_24_Pants_0.20_0_0.01_Torso_Spine_2
+    2300018: Model001_24_PantsArmor_0.20_0_0.02_Head_Head_1
+    2300020: Model001_24_PantsTires_0.20_0_0.1
+    2300022: Model001_25_Hair1_0.10_0_0.1
+    2300024: Model001_25_HairSide_0.10_0_0.2
+    2300026: Model001_25_HairTail_0.10_0_0.3
+    3300000: Model001_24_Armor2_0.20_0_0.4
+    3300002: Model001_24_Armor_0.20_0_0.6_LeftLeg_LeftLeg_Knee
+    3300004: Model001_24_ArmorBelts_0.20_0_0.7_RightLeg_RightLeg_Knee
+    3300006: Model001_24_Boots_0.20_0_0.5
+    3300008: Model001_24_Eyes_0.5_0_0.1
+    3300010: Model001_24_Face_0.25_0_0.8_LeftHand_LeftArm_Hand
+    3300012: Model001_24_Gauntlets_0.20_0_0.9_RightHand_RightArm_Hand
+    3300014: Model001_24_Mouth_0.10_0_0.3_Hips_Pelvis_1
+    3300016: Model001_24_Pants_0.20_0_0.01_Torso_Spine_2
+    3300018: Model001_24_PantsArmor_0.20_0_0.02_Head_Head_1
+    3300020: Model001_24_PantsTires_0.20_0_0.1
+    3300022: Model001_25_Hair1_0.10_0_0.1
+    3300024: Model001_25_HairSide_0.10_0_0.2
+    3300026: Model001_25_HairTail_0.10_0_0.3
+    4300000: Model001_24_Armor2_0.20_0_0.4
+    4300002: Model001_24_Armor_0.20_0_0.6_LeftLeg_LeftLeg_Knee
+    4300004: Model001_24_ArmorBelts_0.20_0_0.7_RightLeg_RightLeg_Knee
+    4300006: Model001_24_Boots_0.20_0_0.5
+    4300008: Model001_24_Eyes_0.5_0_0.1
+    4300010: Model001_24_Face_0.25_0_0.8_LeftHand_LeftArm_Hand
+    4300012: Model001_24_Gauntlets_0.20_0_0.9_RightHand_RightArm_Hand
+    4300014: Model001_24_Mouth_0.10_0_0.3_Hips_Pelvis_1
+    4300016: Model001_24_Pants_0.20_0_0.01_Torso_Spine_2
+    4300018: Model001_24_PantsArmor_0.20_0_0.02_Head_Head_1
+    4300020: Model001_24_PantsTires_0.20_0_0.1
+    4300022: Model001_25_Hair1_0.10_0_0.1
+    4300024: Model001_25_HairSide_0.10_0_0.2
+    4300026: Model001_25_HairTail_0.10_0_0.3
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

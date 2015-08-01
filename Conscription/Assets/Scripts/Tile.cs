@@ -17,11 +17,15 @@ public class Tile : MonoBehaviour {
 	}
 
 	void OnMouseEnter() {
-		Debug.Log (gridPosition.x + " " + gridPosition.y);
 		transform.GetComponent<Renderer>().material.color = mouseOverColor;
 	}
 
 	void OnMouseExit() {
 		transform.GetComponent<Renderer>().material.color = Color.white;
 	}
+
+	void OnMouseDown () {
+		GameManager.instance.moveCurrentUnit (this);
+	}
+
 }

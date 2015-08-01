@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameManager : MonoBehaviour {
+public class TurnManager : MonoBehaviour {
 
 	public Player[] players;
 	public int currentPlayer;

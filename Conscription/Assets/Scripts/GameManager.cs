@@ -172,11 +172,13 @@ public class GameManager : MonoBehaviour {
 		map [7] [0].occupant = unit;
 		unit.currentTile = map [7] [0];
 		unit.player = players [0];
+		players [0].lord = unit;
 		unit = ((GameObject)Instantiate(unitPrefab, new Vector3(4 - Mathf.Floor(mapSize/2),1.5f, -4 + Mathf.Floor(mapSize/2)), unitPrefab.transform.rotation)).GetComponent<Unit>();
 		units.Add (unit);
 		map [4] [4].occupant = unit;
 		unit.currentTile = map [4] [4];
 		unit.player = players [1];
+		players [1].lord = unit;
 	}
 
 	public void clearMovements() {

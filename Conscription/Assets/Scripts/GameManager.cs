@@ -91,7 +91,8 @@ public class GameManager : MonoBehaviour {
 
 	public void selectUnit(Unit unit) {
 		selected = unit;
-		highlightPossibleMoves(unit.currentTile, unit.movement);
+		if (!selected.moved)
+			highlightPossibleMoves(unit.currentTile, unit.movement);
 	}
 
 	public void clearHighlightedMoves() {

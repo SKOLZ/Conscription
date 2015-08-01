@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour {
 		currentPlayer = (currentPlayer + 1) % players.Length;
 		getCurrentPlayer ().addMoreMana ((turnNumber + 1) / 2);
 		clearMovements ();
+		clearHighlightedMoves ();
 		updateNames ();
 	}
 	
@@ -78,12 +79,13 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void moveCurrentUnit(Tile destTile){	
-		if (selected.moved && !possibleMoveTiles.Contains (destTile))
+		if (selected.moved || !possibleMoveTiles.Contains (destTile))
 				return;
 		selected.currentTile.occupant = null;
 		selected.moveDestination = destTile.transform.position + 1.5f * Vector3.up;
 		destTile.occupant = selected;
 		selected.currentTile = destTile;
+		selected.moved = true;
 		deselect ();
 	}
 
@@ -131,8 +133,10 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void clearMovements() {
-		foreach(Unit u in units)
+		foreach (Unit u in units) {
 			u.moved = false;
+			u.attacked = false;
+		}
 	}
 
 

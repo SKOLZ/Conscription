@@ -4,16 +4,17 @@ using System.Collections;
 public class Unit : MonoBehaviour {
 
 	public string name;
-	public int health;
-	public int attack;
+	public int health = 10;
+	public int attack = 5;
 	public int cost;
 	public int movement;
 	public Player player;
 	public Vector3 moveDestination;
 	public Tile currentTile;
 	public float movSpeed = 10.0f;
-	public bool moved; 
-
+	public bool moved;
+	public bool attacked;
+	public bool dead = false;
 	void Awake () {
 		moveDestination = transform.position;
 	}
@@ -26,14 +27,16 @@ public class Unit : MonoBehaviour {
 	}
 
 	public void die() {
-		// TODO
-		Debug.Log (" has died.");
+		dead = true;
 	}
 
 	public void attackUnit(Unit unit) {
+		if (attacked)
+			return;
 		unit.getHit (attack);
-		Debug.Log ("hash attacked");
+		Debug.Log (unit.name + " has attacked for " + unit.attack + "damage");
 		moved = true;
+		attacked = true;
 		getHit (unit.attack);
 	}
 

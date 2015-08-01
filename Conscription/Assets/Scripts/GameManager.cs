@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour {
 
 	public void endTurn() {
 		// TODO: ITERATE END OF TURN EFFECTS
-		selected = null;
+		deselect ();
 		turnNumber++;
 		currentPlayer = (currentPlayer + 1) % players.Length;
 		getCurrentPlayer ().addMoreMana ((turnNumber + 1) / 2);
@@ -82,6 +82,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void deselect() {
+		guiManager.deselectUnit ();
 		clearHighlightedMoves ();
 		clearHighlightedAttacks ();
 		selected = null;
@@ -103,8 +104,10 @@ public class GameManager : MonoBehaviour {
 	public void moveCurrentUnit(Tile destTile){	
 		if (selected.moved || !possibleMoveTiles.Contains (destTile))
 				return;
+		TilePath path = new TilePath (selected.currentTile, selected.movement, destTile);
 		selected.currentTile.occupant = null;
-		selected.moveDestination = destTile.transform.position + new Vector3(0, selected.transform.position.y, 0);
+		selected.path = path;
+		selected.moveDestination = path.getNext().transform.position + new Vector3(0, selected.transform.position.y, 0);
 		destTile.occupant = selected;
 		selected.currentTile = destTile;
 		selected.moved = true;

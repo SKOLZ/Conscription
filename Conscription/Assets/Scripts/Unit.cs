@@ -12,12 +12,13 @@ public class Unit : MonoBehaviour {
 	public Player player;
 	public Vector3 moveDestination;
 	public Tile currentTile;
-	public float movSpeed = 10.0f;
+	public float movSpeed = 5.0f;
 	public bool moved;
 	public bool attacked;
 	public bool dead = false;
 	public Sprite image;
 	public bool lord;
+	public TilePath path;
 
 	void Awake () {
 		moveDestination = transform.position;
@@ -48,6 +49,8 @@ public class Unit : MonoBehaviour {
 		GameManager.instance.clearHighlightedAttacks ();
 		moved = true;
 		attacked = true;
+		GameManager.instance.clearHighlightedMoves ();
+		GameManager.instance.clearHighlightedAttacks ();
 		getHit (unit.attack);
 		GameManager.instance.checkEndGame ();
 	}
@@ -57,8 +60,12 @@ public class Unit : MonoBehaviour {
 		if (Vector3.Distance (moveDestination, transform.position) > 0.1f) {
 			transform.position += (moveDestination - transform.position).normalized * movSpeed * Time.deltaTime;
 
-			if (Vector3.Distance (moveDestination, transform.position) <= 0.1f)
+			if (Vector3.Distance (moveDestination, transform.position) <= 0.2f) {
 				transform.position = moveDestination;
+				if(path != null && !path.isEmpty()) {
+					moveDestination = path.getNext().transform.position + new Vector3(0, transform.position.y, 0);
+				}
+			}
 		}
 	}
 

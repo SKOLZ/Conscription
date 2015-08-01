@@ -1,14 +1,22 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour {
 
+	public Unit selected;
+
 	public static GameManager instance;
 	public GameObject tilePrefab;
+	public Player[] players;
+	public Text[] playerNameDisplays;
+	public int currentPlayer;
+	public int turnNumber;
 	public GameObject unitPrefab;
 	public int mapSize = 8; 
-	private List<List<Tile>> map = new List<List<Tile>>();
+	public List<List<Tile>> map = new List<List<Tile>>();
+	private List<Tile> possibleMoveTiles = new List<Tile>();
 	List <Unit> units = new List<Unit>();
 
 	void Awake (){
@@ -18,10 +26,40 @@ public class GameManager : MonoBehaviour {
 		generateMap ();
 		generateUnits ();
 	}
+
+	public void endTurn() {
+		// TODO: ITERATE END OF TURN EFFECTS
+		selected = null;
+		turnNumber++;
+		currentPlayer = (currentPlayer + 1) % players.Length;
+		getCurrentPlayer ().addMoreMana ((turnNumber + 1) / 2);
+		updateNames ();
+	}
 	
+	public Player getCurrentPlayer() {
+		return players [currentPlayer];
+	}
+
+	public void updateNames() {
+		int i;
+		for(i = 0; i < playerNameDisplays.Length ; i++) {
+			if(i == currentPlayer)
+				playerNameDisplays[i].text = players[i].activePlayerName;
+			else
+				playerNameDisplays[i].text = players[i].playerName;
+		}
+	}
 	// Update is called once per frame
 	void Update () {
-		units [0].move ();
+		if (Input.GetMouseButtonDown (1))
+			selected = null;
+		foreach(Unit u in units)
+			u.move ();
+	}
+
+	public void deselect() {
+		clearHighlightedMoves ();
+		selected = null;
 	}
 
 	private void generateMap() {
@@ -38,14 +76,56 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void moveCurrentUnit(Tile destTile){
-		units[0].moveDestination = destTile.transform.position + 1.5f * Vector3.up;
+		if (!possibleMoveTiles.Contains (destTile))
+			return;
+		selected.currentTile.occupant = null;
+		selected.moveDestination = destTile.transform.position + 1.5f * Vector3.up;
+		destTile.occupant = selected;
+		selected.currentTile = destTile;
+		deselect ();
 	}
 
+	public void selectUnit(Unit unit) {
+		selected = unit;
+		highlightPossibleMoves(unit.currentTile, unit.movement);
+	}
+
+	public void clearHighlightedMoves() {
+		foreach (Tile tile in possibleMoveTiles) {
+			tile.transform.GetComponent<Renderer>().material.color = Tile.defaultColor;
+			tile.colorBuffer = Tile.defaultColor;
+		}
+	}
+
+	public void highlightPossibleMoves (Tile tile, int range) {
+		possibleMoveTiles.Clear ();
+		recursiveTileSet (tile, 0, range, possibleMoveTiles);
+	}
+
+	public void recursiveTileSet(Tile tile, int level, int range, List<Tile> list) {
+		if (level >= range)
+			return;
+		foreach (Tile neighbor in tile.neighbors) {
+			if(!neighbor.occupied()) {
+				neighbor.transform.GetComponent<Renderer>().material.color = Color.green;
+				list.Add(neighbor);
+				recursiveTileSet(neighbor, level + 1, range, list);
+			}
+		}
+	}
 
 	private void generateUnits(){
 		Unit unit;
-		unit = ((GameObject)Instantiate(unitPrefab, new Vector3(Mathf.Floor (mapSize/2), 2, Mathf.Floor (mapSize/2)+ 0.5f), unitPrefab.transform.rotation)).GetComponent<Unit>();
+		unit = ((GameObject)Instantiate(unitPrefab, new Vector3(Mathf.Floor (mapSize/2) - 1, 1, Mathf.Floor (mapSize/2)+ 0.5f), unitPrefab.transform.rotation)).GetComponent<Unit>();
 		units.Add (unit);
+		map [7] [0].occupant = unit;
+		unit.currentTile = map [7] [0];
+		unit.player = players [0];
+		unit = ((GameObject)Instantiate(unitPrefab, new Vector3(4 - Mathf.Floor(mapSize/2),1.5f, -4 + Mathf.Floor(mapSize/2)), unitPrefab.transform.rotation)).GetComponent<Unit>();
+		units.Add (unit);
+		map [4] [4].occupant = unit;
+		unit.currentTile = map [4] [4];
+		unit.player = players [1];
 	}
 
 

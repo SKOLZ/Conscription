@@ -5,6 +5,8 @@ public class Player : MonoBehaviour {
 	
 	public Unit[] units;
 
+	public string playerName;
+	public string activePlayerName;
 	public int mana;
 	public int maxMana;
 	public int manaCap;

@@ -5,6 +5,7 @@ public class Tile : MonoBehaviour {
 
 	public Vector2 gridPosition = Vector2.zero;
 	public Color mouseOverColor;
+	public Unit occupant;
 
 	// Use this for initialization
 	void Start () {
@@ -16,6 +17,10 @@ public class Tile : MonoBehaviour {
 	
 	}
 
+	public bool occupied() {
+		return occupant != null;
+	}
+
 	void OnMouseEnter() {
 		transform.GetComponent<Renderer>().material.color = mouseOverColor;
 	}
@@ -25,7 +30,12 @@ public class Tile : MonoBehaviour {
 	}
 
 	void OnMouseDown () {
-		GameManager.instance.moveCurrentUnit (this);
+		if (GameManager.instance.selected != null) {
+			if(!occupied ()) 
+				GameManager.instance.moveCurrentUnit (this);
+		} else {
+			if(occupant && GameManager.instance.getCurrentPlayer() == occupant.player)
+				GameManager.instance.selected = occupant;
+		}
 	}
-
 }

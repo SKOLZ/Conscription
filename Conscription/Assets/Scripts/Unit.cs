@@ -15,6 +15,8 @@ public class Unit : MonoBehaviour {
 	public bool moved;
 	public bool attacked;
 	public bool dead = false;
+	public Texture image;
+
 	void Awake () {
 		moveDestination = transform.position;
 	}
@@ -28,13 +30,18 @@ public class Unit : MonoBehaviour {
 
 	public void die() {
 		dead = true;
+		GameManager.instance.units.Remove (this);
+		GameManager.instance.clearHighlightedMoves ();
+		GameManager.instance.clearHighlightedAttacks ();
+		Destroy (this.gameObject);
 	}
 
 	public void attackUnit(Unit unit) {
 		if (attacked)
 			return;
 		unit.getHit (attack);
-		Debug.Log (unit.name + " has attacked for " + unit.attack + "damage");
+		Debug.Log (unit.name + " has attacked for " + unit.attack + " damage");
+		GameManager.instance.clearHighlightedAttacks ();
 		moved = true;
 		attacked = true;
 		getHit (unit.attack);

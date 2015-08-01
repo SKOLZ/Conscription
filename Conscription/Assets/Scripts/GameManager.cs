@@ -16,6 +16,10 @@ public class GameManager : MonoBehaviour {
 	public GameObject unitPrefab;
 	public int mapSize = 8; 
 	public List<List<Tile>> map = new List<List<Tile>>();
+	public GuiManager guiManager;
+	public float roundTime;
+
+	private float currentRoundTime;
 	private List<Tile> possibleMoveTiles = new List<Tile>();
 	List <Unit> units = new List<Unit>();
 
@@ -25,6 +29,11 @@ public class GameManager : MonoBehaviour {
 	void Start () {
 		generateMap ();
 		generateUnits ();
+		restartRoundTimer ();
+		getCurrentPlayer().addMoreMana (1);
+		for (int i = 0; i < players.Length; i++) {
+			guiManager.setPlayerMana (i, players[i].mana);
+		}
 	}
 
 	public void endTurn() {
@@ -33,9 +42,12 @@ public class GameManager : MonoBehaviour {
 		turnNumber++;
 		currentPlayer = (currentPlayer + 1) % players.Length;
 		getCurrentPlayer ().addMoreMana ((turnNumber + 1) / 2);
+		
+		guiManager.setPlayerMana (currentPlayer, getCurrentPlayer ().mana);
 		clearMovements ();
 		clearHighlightedMoves ();
 		updateNames ();
+		restartRoundTimer ();
 	}
 	
 	public Player getCurrentPlayer() {
@@ -53,11 +65,19 @@ public class GameManager : MonoBehaviour {
 	}
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetMouseButtonDown (1))
-			selected = null;
-		foreach (Unit u in units) {
-			u.move ();
+		currentRoundTime -= Time.deltaTime;
+		if (currentRoundTime > 0) {
+			guiManager.updateGuiTimer(currentRoundTime);
+			if (Input.GetMouseButtonDown (1))
+				selected = null;
+			foreach (Unit u in units) {
+				u.move ();
+			}
+		} else {
+			endTurn ();
 		}
+
+
 	}
 
 	public void deselect() {
@@ -140,5 +160,9 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
+	private void restartRoundTimer() {
+		currentRoundTime = roundTime;
+		guiManager.updateGuiTimer (currentRoundTime);
+	}
 
 }

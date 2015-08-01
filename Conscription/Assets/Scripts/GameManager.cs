@@ -168,7 +168,7 @@ public class GameManager : MonoBehaviour {
 
 	private void generateUnits(){
 		Unit unit;
-		unit = ((GameObject)Instantiate(unitPrefab, new Vector3(Mathf.Floor (mapSize/2) - 1, unitPrefab.transform.position.y, Mathf.Floor (mapSize/2)+ 0.5f), unitPrefab.transform.rotation)).GetComponent<Unit>();
+		unit = ((GameObject)Instantiate(unitPrefab, new Vector3(Mathf.Floor (mapSize/2) - 1, unitPrefab.transform.position.y, Mathf.Floor (mapSize/2)), unitPrefab.transform.rotation)).GetComponent<Unit>();
 		units.Add (unit);
 		map [7] [0].occupant = unit;
 		unit.currentTile = map [7] [0];

@@ -15,7 +15,7 @@ public class Unit : MonoBehaviour {
 	public bool moved;
 	public bool attacked;
 	public bool dead = false;
-	public Texture image;
+	public Sprite image;
 
 	void Awake () {
 		moveDestination = transform.position;

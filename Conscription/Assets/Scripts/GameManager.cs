@@ -103,7 +103,7 @@ public class GameManager : MonoBehaviour {
 		if (selected.moved || !possibleMoveTiles.Contains (destTile))
 				return;
 		selected.currentTile.occupant = null;
-		selected.moveDestination = destTile.transform.position + 1.5f * Vector3.up;
+		selected.moveDestination = destTile.transform.position + new Vector3(0, selected.transform.position.y, 0);
 		destTile.occupant = selected;
 		selected.currentTile = destTile;
 		selected.moved = true;
@@ -112,6 +112,7 @@ public class GameManager : MonoBehaviour {
 
 	public void selectUnit(Unit unit) {
 		selected = unit;
+		guiManager.selectUnit (unit);
 		if (!selected.moved)
 			highlightPossibleMoves (unit.currentTile, unit.movement);
 		else if (!selected.attacked)
@@ -166,12 +167,12 @@ public class GameManager : MonoBehaviour {
 
 	private void generateUnits(){
 		Unit unit;
-		unit = ((GameObject)Instantiate(unitPrefab, new Vector3(Mathf.Floor (mapSize/2) - 1, 1, Mathf.Floor (mapSize/2)+ 0.5f), unitPrefab.transform.rotation)).GetComponent<Unit>();
+		unit = ((GameObject)Instantiate(unitPrefab, new Vector3(Mathf.Floor (mapSize/2) - 1, unitPrefab.transform.position.y, Mathf.Floor (mapSize/2)+ 0.5f), unitPrefab.transform.rotation)).GetComponent<Unit>();
 		units.Add (unit);
 		map [7] [0].occupant = unit;
 		unit.currentTile = map [7] [0];
 		unit.player = players [0];
-		unit = ((GameObject)Instantiate(unitPrefab, new Vector3(4 - Mathf.Floor(mapSize/2),1.5f, -4 + Mathf.Floor(mapSize/2)), unitPrefab.transform.rotation)).GetComponent<Unit>();
+		unit = ((GameObject)Instantiate(unitPrefab, new Vector3(4 - Mathf.Floor(mapSize/2), unitPrefab.transform.position.y, -4 + Mathf.Floor(mapSize/2)), unitPrefab.transform.rotation)).GetComponent<Unit>();
 		units.Add (unit);
 		map [4] [4].occupant = unit;
 		unit.currentTile = map [4] [4];

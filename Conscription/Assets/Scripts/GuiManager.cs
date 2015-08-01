@@ -6,6 +6,9 @@ public class GuiManager : MonoBehaviour {
 	
 	public Text roundTimer;
 	public Text[] playersMana;
+	public Image selectedUnitImage;
+	public Text selectedUnitAttack;
+	public Text selectedUnitHealth;
 
 	public void updateGuiTimer(float timer) {
 		float seconds = Mathf.Floor(timer % 60);
@@ -24,6 +27,12 @@ public class GuiManager : MonoBehaviour {
 
 	public void setPlayerMana(int playerIndex, int Mana) {
 		playersMana [playerIndex].text = Mana.ToString ();
+	}
+
+	public void selectUnit(Unit unit) {
+		selectedUnitAttack.text = unit.attack.ToString ();
+		selectedUnitHealth.text = unit.health.ToString ();
+		selectedUnitImage.sprite = unit.image;
 	}
 
 }

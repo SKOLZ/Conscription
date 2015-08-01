@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour {
 	public int mapSize = 8; 
 	public List<List<Tile>> map = new List<List<Tile>>();
 	private List<Tile> possibleMoveTiles = new List<Tile>();
+	private List<Tile> possibleAtgtacksTiles = new List<Tile>();
 	public List <Unit> units = new List<Unit>();
 
 	void Awake (){
@@ -54,7 +55,7 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetMouseButtonDown (1))
-			selected = null;
+			deselect ();
 		foreach (Unit u in units) {
 			u.move ();
 		}
@@ -92,13 +93,37 @@ public class GameManager : MonoBehaviour {
 	public void selectUnit(Unit unit) {
 		selected = unit;
 		if (!selected.moved)
-			highlightPossibleMoves(unit.currentTile, unit.movement);
+			highlightPossibleMoves (unit.currentTile, unit.movement);
+		else if (!selected.attacked)
+			highlightPossibleAttacks (unit.currentTile, 1);
 	}
 
 	public void clearHighlightedMoves() {
 		foreach (Tile tile in possibleMoveTiles) {
 			tile.transform.GetComponent<Renderer>().material.color = Tile.defaultColor;
 			tile.colorBuffer = Tile.defaultColor;
+		}
+	}
+
+	public void clearHighlightedAttacks() {
+		foreach (Tile tile in possibleAtgtacksTiles) {
+			tile.transform.GetComponent<Renderer>().material.color = Tile.defaultColor;
+			tile.colorBuffer = Tile.defaultColor;
+		}
+	}
+
+	public void highlightPossibleAttacks(Tile tile, int range) {
+		possibleMoveTiles.Clear ();
+		recursiveAttackTileSet (tile, 0, range, possibleAtgtacksTiles);
+	}
+	
+	public void recursiveAttackTileSet (Tile tile, int level, int range, List<Tile> list) {
+		if (level >= range)
+			return;
+		foreach (Tile neighbor in tile.neighbors) {
+			neighbor.transform.GetComponent<Renderer>().material.color = Color.red;
+			list.Add(neighbor);
+			recursiveAttackTileSet(neighbor, level + 1, range, list);
 		}
 	}
 

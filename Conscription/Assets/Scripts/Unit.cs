@@ -9,6 +9,13 @@ public class Unit : MonoBehaviour {
 	public int cost;
 	public int movement;
 	public Player player;
+	public Vector3 moveDestination;
+	public float movSpeed = 10.0f;
+
+	void Awake () {
+		moveDestination = transform.position;
+	}
+
 
 	public void getHit(int damage) {
 		health -= damage;
@@ -26,7 +33,14 @@ public class Unit : MonoBehaviour {
 		getHit (unit.attack);
 	}
 
-	public void move() {
-		// TODO
-	}
+	public virtual void move() {
+
+		if (Vector3.Distance (moveDestination, transform.position) > 0.1f)
+			transform.position += (moveDestination - transform.position).normalized * movSpeed * Time.deltaTime;
+			
+			if (Vector3.Distance (moveDestination, transform.position) <= 0.1f)
+				transform.position = moveDestination;
+
+	}   
+		
 }

@@ -15,7 +15,8 @@ public class GameManager : MonoBehaviour {
 	public int turnNumber;
 	public GameObject unitPrefab;
 	public int mapSize = 8; 
-	private List<List<Tile>> map = new List<List<Tile>>();
+	public List<List<Tile>> map = new List<List<Tile>>();
+	private List<Tile> possibleMoveTiles = new List<Tile>();
 	List <Unit> units = new List<Unit>();
 
 	void Awake (){
@@ -58,6 +59,11 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
+	public void deselect() {
+		clearHighlightedMoves ();
+		selected = null;
+	}
+
 	private void generateMap() {
 		map = new List<List<Tile>> ();
 		for (int i = 0; i < mapSize; i++) {
@@ -71,13 +77,14 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-	public void moveCurrentUnit(Tile destTile){
-		if (selected.moved)
-			return;
+	public void moveCurrentUnit(Tile destTile){	
+		if (selected.moved && !possibleMoveTiles.Contains (destTile))
+				return;
 		selected.currentTile.occupant = null;
 		selected.moveDestination = destTile.transform.position + 1.5f * Vector3.up;
 		destTile.occupant = selected;
-		selected.currentTile = destTile; 
+		selected.currentTile = destTile;
+		deselect ();
 	}
 
 	public void selectUnit(Unit unit) {
@@ -85,8 +92,28 @@ public class GameManager : MonoBehaviour {
 		highlightPossibleMoves(unit.currentTile, unit.movement);
 	}
 
-	public void highlightPossibleMoves (Tile tile, int range) {
+	public void clearHighlightedMoves() {
+		foreach (Tile tile in possibleMoveTiles) {
+			tile.transform.GetComponent<Renderer>().material.color = Tile.defaultColor;
+			tile.colorBuffer = Tile.defaultColor;
+		}
+	}
 
+	public void highlightPossibleMoves (Tile tile, int range) {
+		possibleMoveTiles.Clear ();
+		recursiveTileSet (tile, 0, range, possibleMoveTiles);
+	}
+
+	public void recursiveTileSet(Tile tile, int level, int range, List<Tile> list) {
+		if (level >= range)
+			return;
+		foreach (Tile neighbor in tile.neighbors) {
+			if(!neighbor.occupied()) {
+				neighbor.transform.GetComponent<Renderer>().material.color = Color.green;
+				list.Add(neighbor);
+				recursiveTileSet(neighbor, level + 1, range, list);
+			}
+		}
 	}
 
 	private void generateUnits(){

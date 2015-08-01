@@ -10,6 +10,7 @@ public class Player : MonoBehaviour {
 	public int mana;
 	public int maxMana;
 	public int manaCap;
+	public Unit lord;
 
 	public void summonUnit(Unit unit) {
 		if (unit.cost <= mana) {

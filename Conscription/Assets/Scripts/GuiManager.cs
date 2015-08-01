@@ -32,7 +32,7 @@ public class GuiManager : MonoBehaviour {
 	public void selectUnit(Unit unit) {
 		selectedUnitAttack.text = unit.attack.ToString ();
 		selectedUnitHealth.text = unit.health.ToString ();
-		selectedUnitImage.sprite = unit.image;
+		//selectedUnitImage.sprite = unit.image;
 	}
 
 }

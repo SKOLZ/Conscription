@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour {
 	private List<Tile> possibleMoveTiles = new List<Tile>();
 	private List<Tile> possibleAtgtacksTiles = new List<Tile>();
 	public List <Unit> units = new List<Unit>();
+	public bool end = false;
 
 	void Awake (){
 		instance = this;
@@ -172,11 +173,13 @@ public class GameManager : MonoBehaviour {
 		map [7] [0].occupant = unit;
 		unit.currentTile = map [7] [0];
 		unit.player = players [0];
+		players [0].lord = unit;
 		unit = ((GameObject)Instantiate(unitPrefab, new Vector3(4 - Mathf.Floor(mapSize/2), unitPrefab.transform.position.y, -4 + Mathf.Floor(mapSize/2)), unitPrefab.transform.rotation)).GetComponent<Unit>();
 		units.Add (unit);
 		map [4] [4].occupant = unit;
 		unit.currentTile = map [4] [4];
 		unit.player = players [1];
+		players [1].lord = unit;
 	}
 
 	public void clearMovements() {
@@ -184,6 +187,15 @@ public class GameManager : MonoBehaviour {
 			u.moved = false;
 			u.attacked = false;
 		}
+	}
+
+	public void checkEndGame() {
+		if (players [0].lord == null && players [1].lord == null)
+			Debug.Log ("DRAW");
+		else if (players [0].lord == null && players [1].lord != null)
+			Debug.Log ("Player 2 WON!"); 
+		else if (players [0].lord != null && players [1].lord == null)
+			Debug.Log ("Player 1 WON!"); 
 	}
 
 	private void restartRoundTimer() {

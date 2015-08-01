@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour {
 
 	public void endTurn() {
 		// TODO: ITERATE END OF TURN EFFECTS
-		selected = null;
+		deselect ();
 		turnNumber++;
 		currentPlayer = (currentPlayer + 1) % players.Length;
 		getCurrentPlayer ().addMoreMana ((turnNumber + 1) / 2);
@@ -82,6 +82,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void deselect() {
+		guiManager.deselectUnit ();
 		clearHighlightedMoves ();
 		clearHighlightedAttacks ();
 		selected = null;

@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour {
 		getCurrentPlayer ().addMoreMana ((turnNumber + 1) / 2);
 		clearMovements ();
 		clearHighlightedMoves ();
+		clearHighlightedAttacks ();
 		updateNames ();
 	}
 	
@@ -63,6 +64,7 @@ public class GameManager : MonoBehaviour {
 
 	public void deselect() {
 		clearHighlightedMoves ();
+		clearHighlightedAttacks ();
 		selected = null;
 	}
 

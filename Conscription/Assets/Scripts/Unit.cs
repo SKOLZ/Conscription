@@ -32,6 +32,7 @@ public class Unit : MonoBehaviour {
 		dead = true;
 		GameManager.instance.units.Remove (this);
 		GameManager.instance.clearHighlightedMoves ();
+		GameManager.instance.clearHighlightedAttacks ();
 		Destroy (this.gameObject);
 	}
 
@@ -39,7 +40,8 @@ public class Unit : MonoBehaviour {
 		if (attacked)
 			return;
 		unit.getHit (attack);
-		Debug.Log (unit.name + " has attacked for " + unit.attack + "damage");
+		Debug.Log (unit.name + " has attacked for " + unit.attack + " damage");
+		GameManager.instance.clearHighlightedAttacks ();
 		moved = true;
 		attacked = true;
 		getHit (unit.attack);

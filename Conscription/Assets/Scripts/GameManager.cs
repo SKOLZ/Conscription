@@ -100,6 +100,10 @@ public class GameManager : MonoBehaviour {
 				tile.gridPosition = new Vector2(i,j);
 				row.Add(tile);
 			}
+			if(i == 0)
+				players[0].summoningZone = row;
+			if(i == (mapSize - 1))
+				players[1].summoningZone = row;
 			map.Add(row);
 		}
 	}
@@ -183,12 +187,14 @@ public class GameManager : MonoBehaviour {
 		map [7] [0].occupant = unit;
 		unit.currentTile = map [7] [0];
 		unit.player = players [0];
+		unit.summoned = true;
 		players [0].lord = unit;
 		unit = ((GameObject)Instantiate(unitPrefab, new Vector3(4 - Mathf.Floor(mapSize/2), unitPrefab.transform.position.y, -4 + Mathf.Floor(mapSize/2)), unitPrefab.transform.rotation)).GetComponent<Unit>();
 		units.Add (unit);
 		map [4] [4].occupant = unit;
 		unit.currentTile = map [4] [4];
 		unit.player = players [1];
+		unit.summoned = true;
 		players [1].lord = unit;
 	}
 

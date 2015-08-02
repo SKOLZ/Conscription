@@ -17,6 +17,7 @@ public class Unit : MonoBehaviour {
 	public bool moved;
 	public bool attacked;
 	public bool dead = false;
+	public bool summoned = false;
 	public Sprite image;
 	public bool lord;
 	public TilePath path;

@@ -233,12 +233,15 @@ public class GameManager : MonoBehaviour {
 		Text winnerLabel = endGamePanel.transform.FindChild ("winnerLabel").gameObject.GetComponent<Text>();
 		if (players [0].lord == null && players [1].lord == null) {
 			winnerLabel.text = "It's a Draw!";
+			SFXManager.instance.playGameEnd();
 			endGamePanel.SetActive (true);
 		} else if (players [0].lord == null && players [1].lord != null) {
 			winnerLabel.text = "PLAYER 2 WINS!";
+			SFXManager.instance.playGameEnd();
 			endGamePanel.SetActive (true);
 		} else if (players [0].lord != null && players [1].lord == null) {
 			winnerLabel.text = "PLAYER 1 WINS!";
+			SFXManager.instance.playGameEnd();
 			endGamePanel.SetActive (true);
 		}
 	}

@@ -36,6 +36,7 @@ public class Unit : MonoBehaviour {
 
 	public void die() {
 		dead = true;
+		SFXManager.instance.playDeath ();
 		if (this.lord) {
 			this.player.lord = null;
 		}
@@ -48,6 +49,7 @@ public class Unit : MonoBehaviour {
 	public void attackUnit(Unit unit) {
 		if (attacked)
 			return;
+		SFXManager.instance.playAttack ();
 		unit.getHit (attack);
 		Debug.Log (this.name + " has attacked for " + this.attack + " damage");
 		GameManager.instance.clearHighlightedAttacks ();

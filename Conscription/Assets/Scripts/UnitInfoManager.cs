@@ -21,7 +21,6 @@ public class UnitInfoManager : MonoBehaviour {
 			return;
 		}
 		if (target == null) {
-			Debug.Log("boom");
 			Destroy (this.gameObject);
 			return;
 		}

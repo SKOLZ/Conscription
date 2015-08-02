@@ -19,7 +19,8 @@ public class Tile : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if (occupied())
+			transform.GetComponent<Renderer> ().material.color = occupant.player.color;
 	}
 
 	public void calculateNeighbors() {

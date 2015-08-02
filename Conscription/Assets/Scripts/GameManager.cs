@@ -106,9 +106,11 @@ public class GameManager : MonoBehaviour {
 				return;
 		TilePath path = new TilePath (selected.currentTile, selected.movement, destTile);
 		selected.currentTile.occupant = null;
+		selected.currentTile.transform.GetComponent<Renderer>().material.color = Tile.defaultColor;
 		selected.path = path;
 		selected.moveDestination = path.getNext().transform.position + new Vector3(0, selected.transform.position.y, 0);
 		destTile.occupant = selected;
+		destTile.transform.GetComponent<Renderer>().material.color = selected.player.color;
 		selected.currentTile = destTile;
 		selected.moved = true;
 		deselect ();

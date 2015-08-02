@@ -6,6 +6,7 @@ public class Player : MonoBehaviour {
 	
 	public Unit[] units;
 	public List<Unit> benchedUnits = new List<Unit>();
+	public List<Tile> summoningZone = new List<Tile>();
 
 	public string playerName;
 	public string activePlayerName;
@@ -15,15 +16,23 @@ public class Player : MonoBehaviour {
 	public Unit lord;
 	public Color color;
 
-	public void summonUnit(Unit unit) {
+	public void summonUnit(Unit unit, Tile tile) {
 		if (unit.cost <= mana) {
-			placeUnit (unit);
+			placeUnit (unit, tile);
 			mana -= unit.cost;
+			GuiManager.instance.setPlayerMana(GameManager.instance.currentPlayer, mana);
 		}
 	}
 
-	public void placeUnit(Unit unit) {
-		// TODO: PLACE ON MAP
+	public void highlightSummonZone() {
+		foreach(Tile tile in summoningZone) {
+			tile.transform.GetComponent<Renderer>().material.color = Tile.highlightMoveColor;
+			tile.colorBuffer = Tile.highlightMoveColor;
+		}
+	}
+
+	public void placeUnit(Unit unit, Tile tile) {
+
 	}
 
 	public void addMoreMana(int turnMana) {

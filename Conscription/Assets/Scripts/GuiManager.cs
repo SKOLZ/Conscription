@@ -16,6 +16,11 @@ public class GuiManager : MonoBehaviour {
 	public int benchMargin;
 	public int benchXOffset;
 	public int benchCount;
+	public static GuiManager instance;
+
+	void Awake (){
+		instance = this;
+	}
 
 	public void updateGuiTimer(float timer) {
 		float seconds = Mathf.Floor(timer % 60);
@@ -61,6 +66,7 @@ public class GuiManager : MonoBehaviour {
 			attack.GetComponent<Text>().text = unit.attack.ToString ();
 			GameObject hp = stats.transform.FindChild ("healthValue").gameObject;
 			hp.GetComponent<Text>().text = unit.health.ToString ();
+			square.GetComponent<UnitPortrait>().unit = unit;
 		}
 	}
 

@@ -56,7 +56,6 @@ public class GameManager : MonoBehaviour {
 		clearHighlightedMoves ();
 		clearHighlightedAttacks ();
 		updateNames ();
-		Camera.main.transform.position = new Vector3 (getCurrentPlayer().lord.transform.position.x - 2f,Camera.main.transform.position.y, getCurrentPlayer().lord.transform.position.z - 2f);
 		restartRoundTimer ();
 	}
 	

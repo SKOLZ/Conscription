@@ -88,6 +88,7 @@ public class GameManager : MonoBehaviour {
 
 	public void deselect() {
 		guiManager.deselectUnit ();
+		getCurrentPlayer ().clearSummonZone ();
 		clearHighlightedMoves ();
 		clearHighlightedAttacks ();
 		selected = null;
@@ -126,6 +127,9 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void selectUnit(Unit unit) {
+		clearHighlightedMoves ();
+		clearHighlightedAttacks ();
+		getCurrentPlayer ().clearSummonZone ();
 		selected = unit;
 		guiManager.selectUnit (unit);
 		if (!selected.moved)
@@ -165,7 +169,8 @@ public class GameManager : MonoBehaviour {
 
 	public void highlightPossibleMoves (Tile tile, int range) {
 		possibleMoveTiles.Clear ();
-		recursiveTileSet (tile, 0, range, possibleMoveTiles);
+		if(selected.summoned)
+			recursiveTileSet (tile, 0, range, possibleMoveTiles);
 	}
 
 	public void recursiveTileSet(Tile tile, int level, int range, List<Tile> list) {

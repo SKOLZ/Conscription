@@ -85,7 +85,7 @@ public class Unit : MonoBehaviour {
 	}
 
 	void OnMouseDown () {
-		if(GameManager.instance.selected == null && GameManager.instance.getCurrentPlayer() == player)
+		if(GameManager.instance.getCurrentPlayer() == player)
 			GameManager.instance.selectUnit(this);
 	}
 		

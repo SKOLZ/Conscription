@@ -17,6 +17,9 @@ public class UnitInfoManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (target != null && !target.summoned) {
+			return;
+		}
 		if (target == null) {
 			Debug.Log("boom");
 			Destroy (this.gameObject);

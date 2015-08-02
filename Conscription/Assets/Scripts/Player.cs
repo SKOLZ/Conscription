@@ -50,6 +50,8 @@ public class Player : MonoBehaviour {
 		unit.currentTile = tile;
 		unit.transform.position = tile.transform.position + new Vector3 (0, unit.transform.position.y, 0);
 		unit.moveDestination = unit.transform.position;
+		UnitInfoManager uim = ((GameObject)Instantiate(GameManager.instance.uimPrefab, new Vector3(unit.transform.position.x + 0.5f, unit.transform.position.y + 1f, unit.transform.position.z  + 0.5f), GameManager.instance.uimPrefab.transform.rotation)).GetComponent<UnitInfoManager>();
+		uim.target = unit;
 		GameManager.instance.units.Add (unit);
 		benchedUnits.Remove (unit);
 		Destroy (unit.portrait.gameObject);

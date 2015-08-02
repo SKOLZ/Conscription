@@ -19,6 +19,7 @@ public class SFXManager : MonoBehaviour {
 	}
 
 	public void playGameEnd() {
+		audio.Stop ();
 		playAudio (gameEnd);
 	}
 	

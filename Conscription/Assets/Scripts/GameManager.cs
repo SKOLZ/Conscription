@@ -44,10 +44,11 @@ public class GameManager : MonoBehaviour {
 	public void endTurn() {
 		// TODO: ITERATE END OF TURN EFFECTS
 		deselect ();
+		getCurrentPlayer ().clearSummonZone ();
 		turnNumber++;
 		currentPlayer = (currentPlayer + 1) % players.Length;
 		getCurrentPlayer ().addMoreMana ((turnNumber + 1) / 2);
-		
+		guiManager.updateBench (getCurrentPlayer ().benchedUnits);
 		guiManager.setPlayerMana (currentPlayer, getCurrentPlayer ().mana);
 		clearMovements ();
 		clearHighlightedMoves ();
@@ -201,7 +202,7 @@ public class GameManager : MonoBehaviour {
 	private void generateBench(Player player) {
 		foreach(GameObject benchedUnit in benchedUnits) {
 			Unit unit;
-			unit = ((GameObject)Instantiate(benchedUnit, new Vector3(999, 999, 999), unitPrefab.transform.rotation)).GetComponent<Unit>();
+			unit = ((GameObject)Instantiate(benchedUnit, new Vector3(999, benchedUnit.transform.position.y, 999), unitPrefab.transform.rotation)).GetComponent<Unit>();
 			player.benchedUnits.Add(unit);
 			unit.player = player;
 		}

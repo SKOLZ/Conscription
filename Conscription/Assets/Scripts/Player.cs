@@ -20,7 +20,9 @@ public class Player : MonoBehaviour {
 		if (unit.cost <= mana) {
 			placeUnit (unit, tile);
 			mana -= unit.cost;
-			GuiManager.instance.setPlayerMana(GameManager.instance.currentPlayer, mana);
+			GuiManager.instance.setPlayerMana (GameManager.instance.currentPlayer, mana);
+		} else {
+			Debug.Log ("Not enough mana!");
 		}
 	}
 
@@ -31,7 +33,24 @@ public class Player : MonoBehaviour {
 		}
 	}
 
+	public void clearSummonZone() {
+		foreach(Tile tile in summoningZone) {
+			tile.transform.GetComponent<Renderer>().material.color = Tile.defaultColor;
+			tile.colorBuffer = Tile.defaultColor;
+		}
+	}
+
 	public void placeUnit(Unit unit, Tile tile) {
+		unit.summoned = true;
+		unit.moved = true;
+		unit.attacked = true;
+		tile.occupant = unit;
+		unit.currentTile = tile;
+		unit.transform.position = tile.transform.position + new Vector3 (0, unit.transform.position.y, 0);
+		unit.moveDestination = unit.transform.position;
+		GameManager.instance.units.Add (unit);
+		benchedUnits.Remove (unit);
+		Destroy (unit.portrait.gameObject);
 
 	}
 

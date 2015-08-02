@@ -21,6 +21,7 @@ public class Unit : MonoBehaviour {
 	public Sprite image;
 	public bool lord;
 	public TilePath path;
+	public UnitPortrait portrait;
 
 	void Awake () {
 		moveDestination = transform.position;

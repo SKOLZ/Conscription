@@ -66,14 +66,16 @@ public class GuiManager : MonoBehaviour {
 			attack.GetComponent<Text>().text = unit.attack.ToString ();
 			GameObject hp = stats.transform.FindChild ("healthValue").gameObject;
 			hp.GetComponent<Text>().text = unit.health.ToString ();
-			square.GetComponent<UnitPortrait>().unit = unit;
+			UnitPortrait portrait = square.GetComponent<UnitPortrait>();
+			portrait.unit = unit;
+			unit.portrait = portrait;
 		}
 	}
 
 	public void destroyBench() {
 		// i = 1 to ignore the bench square prefab
 		for(int i = 1; i < benchBar.transform.childCount ; i++) {
-			Destroy(benchBar.transform.GetChild (i));
+			Destroy(benchBar.transform.GetChild (i).gameObject);
 		}
 	}
 

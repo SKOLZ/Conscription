@@ -10,6 +10,12 @@ public class GuiManager : MonoBehaviour {
 	public Text selectedUnitAttack;
 	public Text selectedUnitHealth;
 
+	public GameObject benchedUnitSquare;
+	public GameObject benchBar;
+	public int benchMargin;
+	public int benchFirstX;
+	public int benchCount;
+
 	public void updateGuiTimer(float timer) {
 		float seconds = Mathf.Floor(timer % 60);
 		string secondsText = seconds < 10 ? "0" + seconds : seconds.ToString();
@@ -41,5 +47,17 @@ public class GuiManager : MonoBehaviour {
 		selectedUnitImage.overrideSprite = null;
 	}
 
+	public void updateBench(Unit[] benchedUnits) {
+		destroyBench ();
+
+	}
+
+	public void destroyBench() {
+		benchCount = 0;
+		// i = 1 to ignore the bench square prefab
+		for(int i = 1; i < benchBar.transform.childCount ; i++) {
+			Destroy(benchBar.transform.GetChild (i));
+		}
+	}
 
 }

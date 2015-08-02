@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Player : MonoBehaviour {
 	
 	public Unit[] units;
+	public List<Unit> benchedUnits = new List<Unit>();
 
 	public string playerName;
 	public string activePlayerName;

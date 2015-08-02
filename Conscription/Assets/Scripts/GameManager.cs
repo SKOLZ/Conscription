@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour {
 	public List <Unit> units = new List<Unit>();
 	public bool end = false;
 
+	public GameObject[] benchedUnits;
+
 	void Awake (){
 		instance = this;
 	}
@@ -172,6 +174,8 @@ public class GameManager : MonoBehaviour {
 	}
 
 	private void generateUnits(){
+		for (int i = 0; i < players.Length; i++)
+			generateBench (players [i]);
 		Unit unit;
 		unit = ((GameObject)Instantiate(unitPrefab, new Vector3(Mathf.Floor (mapSize/2) - 1, unitPrefab.transform.position.y, Mathf.Floor (mapSize/2)), unitPrefab.transform.rotation)).GetComponent<Unit>();
 		units.Add (unit);
@@ -185,6 +189,15 @@ public class GameManager : MonoBehaviour {
 		unit.currentTile = map [4] [4];
 		unit.player = players [1];
 		players [1].lord = unit;
+	}
+
+	private void generateBench(Player player) {
+		foreach(GameObject benchedUnit in benchedUnits) {
+			Unit unit;
+			unit = ((GameObject)Instantiate(benchedUnit, new Vector3(999, 999, 999), unitPrefab.transform.rotation)).GetComponent<Unit>();
+			player.benchedUnits.Add(unit);
+			unit.player = player;
+		}
 	}
 
 	public void clearMovements() {

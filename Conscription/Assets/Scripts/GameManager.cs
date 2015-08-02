@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour {
 		for (int i = 0; i < players.Length; i++) {
 			guiManager.setPlayerMana (i, players[i].mana);
 		}
+		guiManager.updateBench (getCurrentPlayer ().benchedUnits);
 	}
 
 	public void endTurn() {

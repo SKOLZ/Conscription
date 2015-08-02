@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GuiManager : MonoBehaviour {
 	
@@ -13,7 +14,7 @@ public class GuiManager : MonoBehaviour {
 	public GameObject benchedUnitSquare;
 	public GameObject benchBar;
 	public int benchMargin;
-	public int benchFirstX;
+	public int benchXOffset;
 	public int benchCount;
 
 	public void updateGuiTimer(float timer) {
@@ -47,13 +48,24 @@ public class GuiManager : MonoBehaviour {
 		selectedUnitImage.overrideSprite = null;
 	}
 
-	public void updateBench(Unit[] benchedUnits) {
+	public void updateBench(List<Unit> benchedUnits) {
 		destroyBench ();
-
+		for(int i = 0; i < benchedUnits.Count; i++) {
+			GameObject square = (GameObject)Instantiate(benchedUnitSquare, new Vector3(benchXOffset + i * benchMargin, 5, benchedUnitSquare.transform.localPosition.z), benchedUnitSquare.transform.rotation);
+			square.transform.SetParent(benchBar.transform);
+			RectTransform rectTrans = square.GetComponent<RectTransform>();
+			Unit unit = benchedUnits[i];
+			GameObject avatar = square.transform.FindChild ("avatar").gameObject;
+			avatar.GetComponent<Image>().overrideSprite = unit.image;
+			GameObject stats = square.transform.FindChild ("stats").gameObject;
+			GameObject attack = stats.transform.FindChild ("attackValue").gameObject;
+			attack.GetComponent<Text>().text = unit.attack.ToString ();
+			GameObject hp = stats.transform.FindChild ("healthValue").gameObject;
+			hp.GetComponent<Text>().text = unit.health.ToString ();
+		}
 	}
 
 	public void destroyBench() {
-		benchCount = 0;
 		// i = 1 to ignore the bench square prefab
 		for(int i = 1; i < benchBar.transform.childCount ; i++) {
 			Destroy(benchBar.transform.GetChild (i));

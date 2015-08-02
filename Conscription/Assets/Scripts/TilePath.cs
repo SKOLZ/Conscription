@@ -30,11 +30,13 @@ public class TilePath {
 			return -1;
 		}
 		foreach (Tile neighbor in tile.neighbors) {
-			path.Add(neighbor);
-			found = recursivePathSearch(neighbor, level + 1, range, path, dest);
-			if(found > 0)
-				return found;
-			path.Remove (neighbor); 
+			if(!neighbor.occupied()) {
+				path.Add(neighbor);
+				found = recursivePathSearch(neighbor, level + 1, range, path, dest);
+				if(found > 0)
+					return found;
+				path.Remove (neighbor);
+			}
 		}
 		return -1;
 	}

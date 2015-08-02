@@ -183,17 +183,17 @@ public class GameManager : MonoBehaviour {
 		for (int i = 0; i < players.Length; i++)
 			generateBench (players [i]);
 		Unit unit;
-		unit = ((GameObject)Instantiate(unitPrefab, new Vector3(Mathf.Floor (mapSize/2) - 1, unitPrefab.transform.position.y, Mathf.Floor (mapSize/2)), unitPrefab.transform.rotation)).GetComponent<Unit>();
-		units.Add (unit);
-		map [7] [0].occupant = unit;
-		unit.currentTile = map [7] [0];
-		unit.player = players [0];
-		unit.summoned = true;
-		players [0].lord = unit;
 		unit = ((GameObject)Instantiate(unitPrefab, new Vector3(- Mathf.Floor(mapSize/2), unitPrefab.transform.position.y, - Mathf.Floor(mapSize/2)+1), unitPrefab.transform.rotation)).GetComponent<Unit>();
 		units.Add (unit);
 		map [0] [7].occupant = unit;
 		unit.currentTile = map [0] [7];
+		unit.player = players [0];
+		unit.summoned = true;
+		players [0].lord = unit;
+		unit = ((GameObject)Instantiate(unitPrefab, new Vector3(Mathf.Floor (mapSize/2) - 1, unitPrefab.transform.position.y, Mathf.Floor (mapSize/2)), unitPrefab.transform.rotation)).GetComponent<Unit>();
+		units.Add (unit);
+		map [7] [0].occupant = unit;
+		unit.currentTile = map [7] [0];
 		unit.player = players [1];
 		unit.summoned = true;
 		players [1].lord = unit;

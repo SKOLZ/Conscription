@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour {
 	public List<List<Tile>> map = new List<List<Tile>>();
 	public GuiManager guiManager;
 	public float roundTime;
+	public GameObject uimPrefab;
 
 	private float currentRoundTime;
 	private List<Tile> possibleMoveTiles = new List<Tile>();
@@ -189,7 +190,10 @@ public class GameManager : MonoBehaviour {
 		for (int i = 0; i < players.Length; i++)
 			generateBench (players [i]);
 		Unit unit;
+		UnitInfoManager uim;
 		unit = ((GameObject)Instantiate(unitPrefab, new Vector3(- Mathf.Floor(mapSize/2), unitPrefab.transform.position.y, - Mathf.Floor(mapSize/2)+1), unitPrefab.transform.rotation)).GetComponent<Unit>();
+		uim = ((GameObject)Instantiate(uimPrefab, new Vector3(- Mathf.Floor(mapSize/2), unitPrefab.transform.position.y + 1f, - Mathf.Floor(mapSize/2)+1), uimPrefab.transform.rotation)).GetComponent<UnitInfoManager>();
+		uim.target = unit;
 		units.Add (unit);
 		map [0] [7].occupant = unit;
 		unit.currentTile = map [0] [7];
@@ -197,6 +201,8 @@ public class GameManager : MonoBehaviour {
 		unit.summoned = true;
 		players [0].lord = unit;
 		unit = ((GameObject)Instantiate(unitPrefab, new Vector3(Mathf.Floor (mapSize/2) - 1, unitPrefab.transform.position.y, Mathf.Floor (mapSize/2)), unitPrefab.transform.rotation)).GetComponent<Unit>();
+		uim = ((GameObject)Instantiate(uimPrefab, new Vector3(Mathf.Floor (mapSize/2) - 1, unitPrefab.transform.position.y + 1f, Mathf.Floor (mapSize/2)), uimPrefab.transform.rotation)).GetComponent<UnitInfoManager>();
+		uim.target = unit;
 		units.Add (unit);
 		map [7] [0].occupant = unit;
 		unit.currentTile = map [7] [0];

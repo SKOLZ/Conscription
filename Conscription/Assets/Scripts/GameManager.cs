@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour {
 	private List<Tile> possibleAtgtacksTiles = new List<Tile>();
 	public List <Unit> units = new List<Unit>();
 	public bool end = false;
+	public GameObject endGamePanel;
 
 	public GameObject[] benchedUnits;
 
@@ -216,12 +217,17 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void checkEndGame() {
-		if (players [0].lord == null && players [1].lord == null)
-			Debug.Log ("DRAW");
-		else if (players [0].lord == null && players [1].lord != null)
-			Debug.Log ("Player 2 WON!"); 
-		else if (players [0].lord != null && players [1].lord == null)
-			Debug.Log ("Player 1 WON!"); 
+		Text winnerLabel = endGamePanel.transform.FindChild ("winnerLabel").gameObject.GetComponent<Text>();
+		if (players [0].lord == null && players [1].lord == null) {
+			winnerLabel.text = "It's a Draw!";
+			endGamePanel.SetActive (true);
+		} else if (players [0].lord == null && players [1].lord != null) {
+			winnerLabel.text = "PLAYER 2 WINS!";
+			endGamePanel.SetActive (true);
+		} else if (players [0].lord != null && players [1].lord == null) {
+			winnerLabel.text = "PLAYER 1 WINS!";
+			endGamePanel.SetActive (true);
+		}
 	}
 
 	private void restartRoundTimer() {

@@ -36,11 +36,12 @@ public class Unit : MonoBehaviour {
 
 	public void die() {
 		dead = true;
-		GameManager.instance.units.Remove (this);
-		if (this.lord)
+		if (this.lord) {
 			this.player.lord = null;
+		}
 		GameManager.instance.clearHighlightedMoves ();
 		GameManager.instance.clearHighlightedAttacks ();
+		GameManager.instance.units.Remove (this);
 		Destroy (this.gameObject);
 	}
 
@@ -58,9 +59,10 @@ public class Unit : MonoBehaviour {
 			getHit (unit.attack);
 			Debug.Log (unit.name + " has attacked for " + unit.attack + " damage");
 		}
+		GameManager.instance.checkEndGame ();
 		GameManager.instance.deselect();
 		GuiManager.instance.deselectUnit();
-		GameManager.instance.checkEndGame ();
+
 	}
 
 	public bool inAttackRange(Unit unit){

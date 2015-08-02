@@ -58,7 +58,8 @@ public class Unit : MonoBehaviour {
 			getHit (unit.attack);
 			Debug.Log (unit.name + " has attacked for " + unit.attack + " damage");
 		}
-		GameManager.instance.guiManager.deselectUnit();
+		GameManager.instance.deselect();
+		GuiManager.instance.deselectUnit();
 		GameManager.instance.checkEndGame ();
 	}
 

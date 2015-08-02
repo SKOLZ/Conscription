@@ -24,7 +24,7 @@ public class UnitInfoManager : MonoBehaviour {
 			Destroy (this.gameObject);
 			return;
 		}
-		t.position = new Vector3(target.transform.position.x, target.transform.position.y + 1f, target.transform.position.z);
+		t.position = new Vector3(target.transform.position.x, target.transform.position.y + 1.5f, target.transform.position.z);
 		t.LookAt (Camera.main.transform);
 		attackText.text = target.attack.ToString();
 		healthText.text = target.health.ToString();

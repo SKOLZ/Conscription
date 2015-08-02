@@ -66,6 +66,9 @@ public class GuiManager : MonoBehaviour {
 			attack.GetComponent<Text>().text = unit.attack.ToString ();
 			GameObject hp = stats.transform.FindChild ("healthValue").gameObject;
 			hp.GetComponent<Text>().text = unit.health.ToString ();
+			GameObject manaPanel = square.transform.FindChild ("manaPanel").gameObject;
+			GameObject mana = manaPanel.transform.FindChild ("manaValue").gameObject;
+			mana.GetComponent<Text>().text = unit.cost.ToString ();
 			UnitPortrait portrait = square.GetComponent<UnitPortrait>();
 			portrait.unit = unit;
 			unit.portrait = portrait;

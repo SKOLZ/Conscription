@@ -62,6 +62,10 @@ public class Tile : MonoBehaviour {
 		transform.GetComponent<Renderer> ().material.color = colorBuffer;
 	}
 
+	public void debugPosition() {
+		Debug.Log ("[" + gridPosition.x + ", " + gridPosition.y + "]");
+	}
+
 	void OnMouseDown () {
 		if (GameManager.instance.selected != null) {
 			if(!occupied ()) 

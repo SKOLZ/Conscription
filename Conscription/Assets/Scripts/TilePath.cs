@@ -23,10 +23,10 @@ public class TilePath {
 
 	public int recursivePathSearch (Tile tile, int level, int range, List<Tile> path, Tile dest) {
 		int found;
+		if(tile == dest) {
+			return 1;
+		}
 		if (level >= range) {
-			if(tile == dest) {
-				return 1;
-			}
 			return -1;
 		}
 		foreach (Tile neighbor in tile.neighbors) {

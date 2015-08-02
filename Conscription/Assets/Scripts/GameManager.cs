@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour {
 
 	public void endTurn() {
 		// TODO: ITERATE END OF TURN EFFECTS
-		selected = null;
+		deselect ();
 		turnNumber++;
 		currentPlayer = (currentPlayer + 1) % players.Length;
 		getCurrentPlayer ().addMoreMana ((turnNumber + 1) / 2);
@@ -82,6 +82,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void deselect() {
+		guiManager.deselectUnit ();
 		clearHighlightedMoves ();
 		clearHighlightedAttacks ();
 		selected = null;
@@ -103,9 +104,13 @@ public class GameManager : MonoBehaviour {
 	public void moveCurrentUnit(Tile destTile){	
 		if (selected.moved || !possibleMoveTiles.Contains (destTile))
 				return;
+		TilePath path = new TilePath (selected.currentTile, selected.movement, destTile);
 		selected.currentTile.occupant = null;
-		selected.moveDestination = destTile.transform.position + new Vector3(0, selected.transform.position.y, 0);
+		selected.currentTile.transform.GetComponent<Renderer>().material.color = Tile.defaultColor;
+		selected.path = path;
+		selected.moveDestination = path.getNext().transform.position + new Vector3(0, selected.transform.position.y, 0);
 		destTile.occupant = selected;
+		destTile.transform.GetComponent<Renderer>().material.color = selected.player.color;
 		selected.currentTile = destTile;
 		selected.moved = true;
 		deselect ();
@@ -168,7 +173,7 @@ public class GameManager : MonoBehaviour {
 
 	private void generateUnits(){
 		Unit unit;
-		unit = ((GameObject)Instantiate(unitPrefab, new Vector3(Mathf.Floor (mapSize/2) - 1, unitPrefab.transform.position.y, Mathf.Floor (mapSize/2)+ 0.5f), unitPrefab.transform.rotation)).GetComponent<Unit>();
+		unit = ((GameObject)Instantiate(unitPrefab, new Vector3(Mathf.Floor (mapSize/2) - 1, unitPrefab.transform.position.y, Mathf.Floor (mapSize/2)), unitPrefab.transform.rotation)).GetComponent<Unit>();
 		units.Add (unit);
 		map [7] [0].occupant = unit;
 		unit.currentTile = map [7] [0];

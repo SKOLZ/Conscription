@@ -30,7 +30,7 @@ public class TilePath {
 			return -1;
 		}
 		foreach (Tile neighbor in tile.neighbors) {
-			if(!neighbor.occupied()) {
+			if(!neighbor.occupied() && !path.Contains(neighbor)) {
 				path.Add(neighbor);
 				found = recursivePathSearch(neighbor, level + 1, range, path, dest);
 				if(found > 0)

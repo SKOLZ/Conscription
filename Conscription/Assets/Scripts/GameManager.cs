@@ -125,7 +125,7 @@ public class GameManager : MonoBehaviour {
 		if (!selected.moved)
 			highlightPossibleMoves (unit.currentTile, unit.movement);
 		else if (!selected.attacked)
-			highlightPossibleAttacks (unit.currentTile, 1);
+			highlightPossibleAttacks (unit.currentTile, unit.range);
 	}
 
 	public void clearHighlightedMoves() {

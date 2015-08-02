@@ -1,0 +1,111 @@
+Initialize engine version: 5.1.1f1 (2046fc06d4d8)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: Intel(R) HD Graphics 4000 (ID=0x166)
+    Vendor:   Intel
+    VRAM:     128 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\SKOLZ\Documents\wolox\conscription\Conscription\v0.1_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\SKOLZ\Documents\wolox\conscription\Conscription\v0.1_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\SKOLZ\Documents\wolox\conscription\Conscription\v0.1_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\SKOLZ\Documents\wolox\conscription\Conscription\v0.1_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\SKOLZ\Documents\wolox\conscription\Conscription\v0.1_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\SKOLZ\Documents\wolox\conscription\Conscription\v0.1_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\SKOLZ\Documents\wolox\conscription\Conscription\v0.1_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\SKOLZ\Documents\wolox\conscription\Conscription\v0.1_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\SKOLZ\Documents\wolox\conscription\Conscription\v0.1_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
+Loading C:\Users\SKOLZ\Documents\wolox\conscription\Conscription\v0.1_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
+Platform assembly: C:\Users\SKOLZ\Documents\wolox\conscription\Conscription\v0.1_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\SKOLZ\Documents\wolox\conscription\Conscription\v0.1_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\SKOLZ\Documents\wolox\conscription\Conscription\v0.1_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\SKOLZ\Documents\wolox\conscription\Conscription\v0.1_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+- Completed reload, in  0.055 seconds
+desktop: 1366x768 60Hz; virtual: 1920x1848 at 0,-1080
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+Platform assembly: C:\Users\SKOLZ\Documents\wolox\conscription\Conscription\v0.1_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\SKOLZ\Documents\wolox\conscription\Conscription\v0.1_Data\Managed\System.dll (this message is harmless)
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: dc04 -> priority: 1 
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 4.024767 ms
+
+Unloading 24 unused Assets to reduce memory usage. Loaded Objects now: 885.
+Total: 0.561184 ms (FindLiveObjects: 0.037357 ms CreateObjectMapping: 0.041462 ms MarkObjects: 0.329649 ms  DeleteObjects: 0.152304 ms)
+
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: dc44 -> priority: 1 
+Lord Saevyr has attacked for 1 damage
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Death Knight has attacked for 2 damage
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Death Knight has attacked for 2 damage
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Lord Saevyr has attacked for 1 damage
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Lord Saevyr has attacked for 1 damage
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Lord Saevyr has attacked for 1 damage
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Death Knight has attacked for 2 damage
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Lord Saevyr has attacked for 1 damage
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Lord Saevyr has attacked for 1 damage
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Lord Saevyr has attacked for 1 damage
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Lord Saevyr has attacked for 1 damage
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Lord Saevyr has attacked for 1 damage
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Death Knight has attacked for 2 damage
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Lord Saevyr has attacked for 1 damage
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.770175 ms
+
+Unloading 101 unused Assets to reduce memory usage. Loaded Objects now: 716.
+Total: 1.296842 ms (FindLiveObjects: 0.039820 ms CreateObjectMapping: 0.036126 ms MarkObjects: 0.352639 ms  DeleteObjects: 0.867845 ms)
+
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: dff8 -> priority: 1 
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.459785 ms
+
+Unloading 23 unused Assets to reduce memory usage. Loaded Objects now: 889.
+Total: 0.566111 ms (FindLiveObjects: 0.036947 ms CreateObjectMapping: 0.034894 ms MarkObjects: 0.338681 ms  DeleteObjects: 0.155588 ms)
+
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: dcac -> priority: 1 

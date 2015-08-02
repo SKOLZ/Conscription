@@ -1,0 +1,36 @@
+Initialize engine version: 5.1.1f1 (2046fc06d4d8)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: Intel(R) HD Graphics 4000 (ID=0x166)
+    Vendor:   Intel
+    VRAM:     128 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\SKOLZ\Documents\wolox\conscription\Conscription\v0.4_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\SKOLZ\Documents\wolox\conscription\Conscription\v0.4_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\SKOLZ\Documents\wolox\conscription\Conscription\v0.4_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\SKOLZ\Documents\wolox\conscription\Conscription\v0.4_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\SKOLZ\Documents\wolox\conscription\Conscription\v0.4_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\SKOLZ\Documents\wolox\conscription\Conscription\v0.4_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\SKOLZ\Documents\wolox\conscription\Conscription\v0.4_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\SKOLZ\Documents\wolox\conscription\Conscription\v0.4_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\SKOLZ\Documents\wolox\conscription\Conscription\v0.4_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
+Loading C:\Users\SKOLZ\Documents\wolox\conscription\Conscription\v0.4_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
+- Completed reload, in  0.178 seconds
+<RI> Initializing input.
+<RI> Input initialized.
+desktop: 1366x768 60Hz; virtual: 1920x1848 at 0,-1080
+<RI> Initialized touch support.
+Platform assembly: C:\Users\SKOLZ\Documents\wolox\conscription\Conscription\v0.4_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\SKOLZ\Documents\wolox\conscription\Conscription\v0.4_Data\Managed\System.dll (this message is harmless)
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: e9e0 -> priority: 1 
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Shader 'Nature/Terrain/Diffuse': dependency 'Details0' shader 'Hidden/TerrainEngine/Details/Vertexlit' not found
+UnloadTime: 2.248024 ms
+
+Unloading 25 unused Assets to reduce memory usage. Loaded Objects now: 954.
+Total: 0.598953 ms (FindLiveObjects: 0.040641 ms CreateObjectMapping: 0.041873 ms MarkObjects: 0.360849 ms  DeleteObjects: 0.155177 ms)
+
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: dddc -> priority: 1 

@@ -10,9 +10,10 @@ public class UnitPortrait : MonoBehaviour {
 	}
 
 	public void Select() {
-		if (GameManager.instance.selected == null) {
+		GameManager.instance.selectUnit(unit);
+		GuiManager.instance.selectUnit (unit);
+		if(unit.player.mana >= unit.cost) {
 			GameManager.instance.getCurrentPlayer().highlightSummonZone();
-			GameManager.instance.selected = unit;
 		}
 	}
 }

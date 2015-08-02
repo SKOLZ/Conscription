@@ -78,6 +78,8 @@ public class Tile : MonoBehaviour {
 			}
 			if(occupied () && occupant.player != GameManager.instance.getCurrentPlayer() && inRange(GameManager.instance.selected.currentTile))
 				GameManager.instance.selected.currentTile.occupant.attackUnit(occupant);
+			if(occupant && GameManager.instance.getCurrentPlayer() == occupant.player)
+				GameManager.instance.selectUnit(occupant);
 		} else {
 			if(occupant && GameManager.instance.getCurrentPlayer() == occupant.player)
 				GameManager.instance.selectUnit(occupant);
@@ -85,6 +87,8 @@ public class Tile : MonoBehaviour {
 	}
 
 	public bool inRange(Tile tile){
+		if (tile == null)
+			return false;
 		return  (Mathf.Abs (this.gridPosition.x - tile.gridPosition.x) + Mathf.Abs (this.gridPosition.y - tile.gridPosition.y)) <= tile.occupant.range;
 	}
 

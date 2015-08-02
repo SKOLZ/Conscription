@@ -11,6 +11,7 @@ public class UnitPortrait : MonoBehaviour {
 	}
 
 	public void Select() {
+		GuiManager.instance.deselectUnit ();
 		GameManager.instance.deselect ();
 		GetComponent<Image> ().color = Color.green;
 		GameManager.instance.selectUnit(unit);

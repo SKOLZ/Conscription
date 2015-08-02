@@ -78,8 +78,11 @@ public class Tile : MonoBehaviour {
 			}
 			if(occupied () && occupant.player != GameManager.instance.getCurrentPlayer() && inRange(GameManager.instance.selected.currentTile))
 				GameManager.instance.selected.currentTile.occupant.attackUnit(occupant);
-			if(occupant && GameManager.instance.getCurrentPlayer() == occupant.player)
+			if(occupant && GameManager.instance.getCurrentPlayer() == occupant.player) {
+				GuiManager.instance.deselectUnit ();
+				GameManager.instance.deselect ();
 				GameManager.instance.selectUnit(occupant);
+			}
 		} else {
 			if(occupant && GameManager.instance.getCurrentPlayer() == occupant.player)
 				GameManager.instance.selectUnit(occupant);

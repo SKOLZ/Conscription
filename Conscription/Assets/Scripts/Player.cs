@@ -20,6 +20,8 @@ public class Player : MonoBehaviour {
 		if (unit.cost <= mana) {
 			placeUnit (unit, tile);
 			mana -= unit.cost;
+			clearSummonZone();
+			GameManager.instance.deselect();
 			GuiManager.instance.setPlayerMana (GameManager.instance.currentPlayer, mana);
 		} else {
 			Debug.Log ("Not enough mana!");

@@ -53,7 +53,6 @@ public class GuiManager : MonoBehaviour {
 		for(int i = 0; i < benchedUnits.Count; i++) {
 			GameObject square = (GameObject)Instantiate(benchedUnitSquare, new Vector3(benchXOffset + i * benchMargin, 5, benchedUnitSquare.transform.localPosition.z), benchedUnitSquare.transform.rotation);
 			square.transform.SetParent(benchBar.transform);
-			RectTransform rectTrans = square.GetComponent<RectTransform>();
 			Unit unit = benchedUnits[i];
 			GameObject avatar = square.transform.FindChild ("avatar").gameObject;
 			avatar.GetComponent<Image>().overrideSprite = unit.image;

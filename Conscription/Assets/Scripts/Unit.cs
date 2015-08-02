@@ -52,6 +52,7 @@ public class Unit : MonoBehaviour {
 		GameManager.instance.clearHighlightedMoves ();
 		GameManager.instance.clearHighlightedAttacks ();
 		getHit (unit.attack);
+		GameManager.instance.guiManager.deselectUnit();
 		GameManager.instance.checkEndGame ();
 	}
 

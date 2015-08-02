@@ -9,6 +9,7 @@ public class Unit : MonoBehaviour {
 	public int attack = 5;
 	public int cost;
 	public int movement;
+	public int range;
 	public Player player;
 	public Vector3 moveDestination;
 	public Tile currentTile;
@@ -51,9 +52,15 @@ public class Unit : MonoBehaviour {
 		attacked = true;
 		GameManager.instance.clearHighlightedMoves ();
 		GameManager.instance.clearHighlightedAttacks ();
-		getHit (unit.attack);
+		if (inAttackRange(unit))
+			getHit (unit.attack);
 		GameManager.instance.guiManager.deselectUnit();
 		GameManager.instance.checkEndGame ();
+	}
+
+	public bool inAttackRange(Unit unit){
+		return  (Mathf.Abs (this.currentTile.gridPosition.x - unit.currentTile.gridPosition.x) + Mathf.Abs (this.currentTile.gridPosition.y - unit.currentTile.gridPosition.y)) <= unit.range;
+		
 	}
 
 	public virtual void move() {

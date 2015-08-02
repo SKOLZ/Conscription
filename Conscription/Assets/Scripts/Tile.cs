@@ -70,11 +70,16 @@ public class Tile : MonoBehaviour {
 		if (GameManager.instance.selected != null) {
 			if(!occupied ()) 
 				GameManager.instance.moveCurrentUnit (this);
-			if(occupied () && occupant.player != GameManager.instance.getCurrentPlayer() && this.neighbors.Contains(GameManager.instance.selected.currentTile))
+			if(occupied () && occupant.player != GameManager.instance.getCurrentPlayer() && inRange(GameManager.instance.selected.currentTile))
 				GameManager.instance.selected.currentTile.occupant.attackUnit(occupant);
 		} else {
 			if(occupant && GameManager.instance.getCurrentPlayer() == occupant.player)
 				GameManager.instance.selectUnit(occupant);
 		}
 	}
+
+	public bool inRange(Tile tile){
+		return  (Mathf.Abs (this.gridPosition.x - tile.gridPosition.x) + Mathf.Abs (this.gridPosition.y - tile.gridPosition.y)) <= tile.occupant.range;
+	}
+
 }

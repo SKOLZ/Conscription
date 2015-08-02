@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -67,9 +67,15 @@ public class Tile : MonoBehaviour {
 	}
 
 	void OnMouseDown () {
-		if (GameManager.instance.selected != null) {
-			if(!occupied ()) 
-				GameManager.instance.moveCurrentUnit (this);
+		Unit selected = GameManager.instance.selected;
+		if (selected != null) {
+			if(!occupied ()) { 
+				if(selected.summoned) 
+					GameManager.instance.moveCurrentUnit (this);
+				if(!selected.summoned && GameManager.instance.getCurrentPlayer().summoningZone.Contains(this)) {
+					GameManager.instance.getCurrentPlayer().summonUnit(selected, this);
+				}
+			}
 			if(occupied () && occupant.player != GameManager.instance.getCurrentPlayer() && inRange(GameManager.instance.selected.currentTile))
 				GameManager.instance.selected.currentTile.occupant.attackUnit(occupant);
 		} else {

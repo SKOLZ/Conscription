@@ -48,14 +48,16 @@ public class Unit : MonoBehaviour {
 		if (attacked)
 			return;
 		unit.getHit (attack);
-		Debug.Log (unit.name + " has attacked for " + unit.attack + " damage");
+		Debug.Log (this.name + " has attacked for " + this.attack + " damage");
 		GameManager.instance.clearHighlightedAttacks ();
 		moved = true;
 		attacked = true;
 		GameManager.instance.clearHighlightedMoves ();
 		GameManager.instance.clearHighlightedAttacks ();
-		if (inAttackRange(unit))
+		if (inAttackRange (unit)) {
 			getHit (unit.attack);
+			Debug.Log (unit.name + " has attacked for " + unit.attack + " damage");
+		}
 		GameManager.instance.guiManager.deselectUnit();
 		GameManager.instance.checkEndGame ();
 	}

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class UnitPortrait : MonoBehaviour {
@@ -10,6 +11,8 @@ public class UnitPortrait : MonoBehaviour {
 	}
 
 	public void Select() {
+		GameManager.instance.deselect ();
+		GetComponent<Image> ().color = Color.green;
 		GameManager.instance.selectUnit(unit);
 		GuiManager.instance.selectUnit (unit);
 		if(unit.player.mana >= unit.cost) {

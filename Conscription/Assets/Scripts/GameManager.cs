@@ -88,6 +88,8 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void deselect() {
+		if (selected != null && selected.portrait != null)
+			selected.portrait.GetComponent<Image> ().color = Color.black;
 		guiManager.deselectUnit ();
 		getCurrentPlayer ().clearSummonZone ();
 		clearHighlightedMoves ();

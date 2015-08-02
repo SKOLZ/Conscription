@@ -16,6 +16,7 @@ public class GuiManager : MonoBehaviour {
 	public int benchMargin;
 	public int benchXOffset;
 	public int benchCount;
+	public List<UnitPortrait> portraits = new List<UnitPortrait>();
 	public static GuiManager instance;
 
 	void Awake (){
@@ -48,6 +49,9 @@ public class GuiManager : MonoBehaviour {
 	}
 
 	public void deselectUnit() {
+		foreach (UnitPortrait portrait in portraits) {
+			portrait.GetComponent<Image>().color = Color.black;
+		}
 		selectedUnitAttack.text = "-";
 		selectedUnitHealth.text = "-";
 		selectedUnitImage.overrideSprite = null;
@@ -72,10 +76,12 @@ public class GuiManager : MonoBehaviour {
 			UnitPortrait portrait = square.GetComponent<UnitPortrait>();
 			portrait.unit = unit;
 			unit.portrait = portrait;
+			portraits.Add(portrait);
 		}
 	}
 
 	public void destroyBench() {
+		portraits.Clear ();
 		// i = 1 to ignore the bench square prefab
 		for(int i = 1; i < benchBar.transform.childCount ; i++) {
 			Destroy(benchBar.transform.GetChild (i).gameObject);

@@ -54,6 +54,7 @@ public class Player : MonoBehaviour {
 		uim.target = unit;
 		GameManager.instance.units.Add (unit);
 		benchedUnits.Remove (unit);
+		GuiManager.instance.portraits.Remove (unit.portrait);
 		Destroy (unit.portrait.gameObject);
 
 	}

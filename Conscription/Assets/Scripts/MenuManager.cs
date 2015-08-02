@@ -8,9 +8,7 @@ public class MenuManager : MonoBehaviour {
 	public GameObject instructionsButton;
 	public GameObject quitButton;
 
-	public void startGame() {
-		Application.LoadLevel("Main");
-	}
+	//MAIN MENU FUNCTIONS
 
 	public void openInstructions() {
 		instructionsPanel.SetActive (true);
@@ -26,8 +24,19 @@ public class MenuManager : MonoBehaviour {
 		quitButton.SetActive (true);
 	}
 
+	// INGAME FUNCTIONS
+
+	public void goToMainMenu() {
+		Application.LoadLevel("Menu");
+	}
+
+	//SHARED FUNCTIONS
+
+	public void startGame() {
+		Application.LoadLevel("Main");
+	}
+
 	public void quit() {
 		Application.Quit ();
 	}
-
 }

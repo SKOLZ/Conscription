@@ -190,10 +190,10 @@ public class GameManager : MonoBehaviour {
 		unit.player = players [0];
 		unit.summoned = true;
 		players [0].lord = unit;
-		unit = ((GameObject)Instantiate(unitPrefab, new Vector3(4 - Mathf.Floor(mapSize/2), unitPrefab.transform.position.y, -4 + Mathf.Floor(mapSize/2)), unitPrefab.transform.rotation)).GetComponent<Unit>();
+		unit = ((GameObject)Instantiate(unitPrefab, new Vector3(- Mathf.Floor(mapSize/2), unitPrefab.transform.position.y, - Mathf.Floor(mapSize/2)+1), unitPrefab.transform.rotation)).GetComponent<Unit>();
 		units.Add (unit);
-		map [4] [4].occupant = unit;
-		unit.currentTile = map [4] [4];
+		map [0] [7].occupant = unit;
+		unit.currentTile = map [0] [7];
 		unit.player = players [1];
 		unit.summoned = true;
 		players [1].lord = unit;
